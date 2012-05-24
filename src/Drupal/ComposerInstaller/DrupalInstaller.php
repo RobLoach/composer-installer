@@ -34,15 +34,21 @@ class DrupalInstaller extends LibraryInstaller {
    * {@inheritDoc}
    */
   public function getInstallPath(PackageInterface $package) {
+    // Construct the clean name, without the vendor in there.
+    $name = $package->getName();
+    $slash = strpos($name, '/');
+    $name = substr($name, $slash >= 1 ? $slash + 1 : 0);
+
+    // Check whether we are installing a module, theme or component.
     switch ($package->getType()) {
       case 'drupal-drush':
-        return $this->serverHome() . '/.drush/' . $package->getName();
+        return $this->serverHome() . '/.drush/' . $name;
         break;
       case 'drupal-module':
-        return $this->locateDrupalRoot() . '/sites/all/modules/' . $package->getName();
+        return $this->locateDrupalRoot() . '/sites/all/modules/' . $name;
         break;
       case 'drupal-theme':
-        return $this->locateDrupalRoot() . '/sites/all/theme/' . $package->getName();
+        return $this->locateDrupalRoot() . '/sites/all/theme/' . $name;
         break;
     }
   }
