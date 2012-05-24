@@ -1,0 +1,20 @@
+{
+  "name": "drupal/composer-installer",
+  "description": "Allows Composer to install Drupal modules, themes and Drush components.",
+  "type": "composer-installer",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rob Loach",
+      "homepage": "http://robloach.net"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Drupal\\ComposerInstaller": "src/"
+    }
+  },
+  "extra": {
+    "class": "Drupal\\ComposerInstaller\\DrupalInstaller"
+  }
+}
