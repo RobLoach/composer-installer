@@ -35,13 +35,13 @@ class DrupalInstaller extends LibraryInstaller {
    */
   public function getInstallPath(PackageInterface $package) {
     switch ($package->getType()) {
-      switch 'drupal-drush':
+      case 'drupal-drush':
         return $this->serverHome() . '/.drush/' . $package->getName();
         break;
-      switch 'drupal-module':
+      case 'drupal-module':
         return $this->locateDrupalRoot() . '/sites/all/modules/' . $package->getName();
         break;
-      switch 'drupal-theme':
+      case 'drupal-theme':
         return $this->locateDrupalRoot() . '/sites/all/theme/' . $package->getName();
         break;
     }
